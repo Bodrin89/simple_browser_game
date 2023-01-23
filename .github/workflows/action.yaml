@@ -9,5 +9,7 @@ jobs:
         uses: actions/checkout@v2
       - name: docker build
         run: docker buildx build --platform linux/amd64 -t vladimirbodrin/coursework_5:$GITHUB_REF_NAME-$GITHUB_RUN_ID .
+      - name: docker push
+        run: docker push vladimirbodrin/coursework_5:$GITHUB_REF_NAME-$GITHUB_RUN_ID
 #      - name: docker login
 #        run: echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
