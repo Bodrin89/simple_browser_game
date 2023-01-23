@@ -34,14 +34,14 @@ jobs:
           target: "coursework_5"
           strip_components: 1
       - name: deploy_app
-          uses: appleboy/ssh-action@v0.1.7
-          with:
-            host: ${{ secrets.HOST }}
-            username: ${{ secrets.USERNAME }}
-            password: ${{ secrets.PASSWORD }}
-            script: |
-              cd coursework_5
-              echo ${{ secrets.PASSWORD }} | sudo -S docker-compose up -d
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          script: |
+            cd coursework_5
+            echo ${{ secrets.PASSWORD }} | sudo -S docker-compose up -d
 
 
 
