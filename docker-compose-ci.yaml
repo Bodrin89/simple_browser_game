@@ -7,4 +7,4 @@ services:
       context: .github/workflows
     image: vladimirbodrin/coursework_5:$GITHUB_REF_NAME-$GITHUB_RUN_ID
     ports:
-      - 8081:8081
+      - 80:80
