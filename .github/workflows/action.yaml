@@ -14,7 +14,7 @@ jobs:
       - name: docker push
         run: docker push vladimirbodrin/coursework_5:$GITHUB_REF_NAME-$GITHUB_RUN_ID
 
-  deploy_docker_compose:
+  deploy_file:
     runs-on: ubuntu-latest
     needs: build_and_push
     steps:
@@ -33,6 +33,15 @@ jobs:
           source: "flask_project/docker-compose.yaml"
           target: "coursework_5"
           strip_components: 1
+      - name: deploy_app
+          uses: appleboy/ssh-action@v0.1.7
+          with:
+            host: ${{ secrets.HOST }}
+            username: ${{ secrets.USERNAME }}
+            password: ${{ secrets.PASSWORD }}
+            script: |
+              cd coursework_5
+              echo ${{ secrets.PASSWORD }} | sudo -S docker-compose up -d
 
 
 
